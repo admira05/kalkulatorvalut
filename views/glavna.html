@@ -1,0 +1,115 @@
+<html>
+<head>
+	<title>Kalkulator valut</title>
+
+	<style type="text/css">
+
+		body{
+			background-color: #e6f2ff
+		}
+		#ms {
+			text-align: center;
+			float: left;
+			position: relative;
+			margin: 50px 0px 0px 50px;
+		}
+		#ds {
+			float: left;
+			margin: 50px auto 0px 150px;
+}
+		table, th, td{
+			border: 1px solid lightblue;
+			background-color: #e6f9ff;
+			text-align: center;
+		}
+		th {
+			min-width: 100px;
+		}
+		
+		tr:hover,td:hover {background-color: white}
+
+		.tabela {
+			margin-right = auto;
+			margin-bottom: 0 !important;
+			background-color: #e6f9ff;
+			border: none;
+			text-align: center;
+			cursor: pointer;
+			width: 100%;
+			display: table-cell;
+		}
+		input {
+			background-color: white;
+			margin-bottom: 10px;
+			padding-left: 25px;
+			padding-right: 25px;
+			padding-top: 8px;
+			padding-bottom: 8px;
+			border: 1.5px solid lightblue;
+			border-radius: 2px;
+			text-align: center;
+			cursor: pointer;
+		}
+
+		form {
+			display: table-cell;
+			width: 100%;   
+		}
+
+		input:hover {
+			background-color: white;
+		}
+
+
+	  button {
+      background-color: white;
+      color:  #000033;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-family: 'Open Sans', sans-serif;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 2px;
+      border-color: lightblue;
+      cursor: pointer;
+	  }
+
+	</style>
+
+</head>
+<body>
+
+	<div id="ms">
+		<h2>Kalkulator Valut</h2>
+		
+			
+		<form action="/"  method="post">
+		  <label for="vrednost">Vrednost: </label>
+		  <input type="text" id="vrednost" name="vrednost" value={{izbrana_vrednost}} ><br>
+		  <label for="valute">Izberi vhodno valuto:</label>
+		  <select name="izbrana_valuta" id="valute">
+			%for (ime_valute, _, _) in valute:
+			  <option value={{ime_valute}} {{!'selected="selected"' if izbrana_valuta == ime_valute else ""}} >{{ime_valute}}</option>
+			%end
+		  </select>
+		  
+		  <input type="submit" value="Submit">
+		</form>
+		<table cellpadding="0" cellspacing="0">
+			<tr>
+			<p id="glava_tabele"></p>
+				<th>Valuta</th>
+				<th>Menjalni tečaj</th>
+				<th>Vrednost</th>
+			</tr>
+			%for (ime_valute, menjalni_tecaj, izracunana_vrednost) in valute:
+			<tr>
+				<td id="menjalni_tecaj" >{{ime_valute}}</td>
+				<td id="menjalni_tecaj" >{{round(menjalni_tecaj,4)}}</td>
+				<td id="izracunana_vrednost" >{{round(izracunana_vrednost,4)}}</td>
+			</tr>
+			%end
+		</table>
+</body>
+
+</html>
