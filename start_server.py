@@ -5,17 +5,19 @@ from bottle import *
 from urllib import request as urlrllibrequest
 import json
 
-menjalni_tecaji_api_url = "https://api.exchangeratesapi.io/latest"
+'''
+    Na spodnji povezavi so menjalni tecaji z interneta. 
+    V nadaljevanju naloge bo funkcija obiskala posodobila menjalne tecaje s tistimi iz interneta.
+'''
+
+menjalni_tecaji_api_url ="https://api.exchangeratesapi.io/latest"
 privzeta_vrednost = 10.0
 privzeta_valuta = "EUR"
 #Zacetne valute, kasneje jih posodobimo s tistimi iz interneta
 valute = [("EUR",1), ("USD",1.13), ("GBP", 0.9), ("CHF", 1.06), ("JPY", 120.83), ("INR", 84.93), ("PLN", 4.47), ("CNY",7.91), ("CAD",1.54), ("BRL", 6.02), ("RUB",79.93),  ("BAM",1.96), ("HRK", 7,52)]
 
-'''
-    Funkcija obisce exchangerates API in posodobi menjalne tecaje
-    z tistimi iz interneta.
-'''
-def posodobi_valute():
+
+def posodobri_valute():
     r = urlrllibrequest.urlopen(url = menjalni_tecaji_api_url) 
     loadeddata = json.loads(r.read())
     valuteDict = loadeddata.get("rates").items()
@@ -89,7 +91,7 @@ def posodobi():
     posodobi_valute()
     return  privzeta_stran()
 
-def privzeta_stran():
+def privzeta_stran()
         return template('glavna.html', valute=pretvori_vhodno_vrednost_in_valuto_v_ostale_valute(privzeta_vrednost, privzeta_valuta),  izbrana_vrednost = privzeta_vrednost, izbrana_valuta = privzeta_valuta)
 
 def uporabnikova_stran():
