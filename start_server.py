@@ -17,7 +17,7 @@ privzeta_valuta = "EUR"
 valute = [("EUR",1), ("USD",1.13), ("GBP", 0.9), ("CHF", 1.06), ("JPY", 120.83), ("INR", 84.93), ("PLN", 4.47), ("CNY",7.91), ("CAD",1.54), ("BRL", 6.02), ("RUB",79.93),  ("BAM",1.96), ("HRK", 7,52)]
 
 
-def posodobri_valute():
+def posodobi_valute():
     r = urlrllibrequest.urlopen(url = menjalni_tecaji_api_url) 
     loadeddata = json.loads(r.read())
     valuteDict = loadeddata.get("rates").items()
