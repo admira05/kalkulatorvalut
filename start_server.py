@@ -18,7 +18,7 @@ valute = [("EUR",1), ("USD",1.13), ("GBP", 0.9), ("CHF", 1.06), ("JPY", 120.83),
 
 
 def posodobi_valute():
-    r = urlllib.request.urlopen(url = menjalni_tecaji_api_url) 
+    r = urlrllibrequest.urlopen(url = menjalni_tecaji_api_url) 
     loadeddata = json.loads(r.read())
     valuteDict = loadeddata.get("rates").items()
     seznamValut =  [(k, v) for k, v in loadeddata.get("rates").items()]
@@ -68,9 +68,9 @@ def pretvori_menjalne_tecaje_na_bazo_izbrane_valute(izbrana_valuta):
         if valuta[0] ==  izbrana_valuta:
             menjalni_tecaj_izbrane_valute = valuta[1]
     for valuta in valute:
-            spremenjen_menjalni_tecaj = valuta[1]/menjalni_tecaj_izbrane_valute
-            valute_s_spremenjeno_bazo.append((valuta[0], spremenjen_menjalni_tecaj) 
-        #valute_s_spremenjeno_bazo.append((valuta[0],valuta[1]/menjalni_tecaj_izbrane_valute))
+        #spremenjen_menjalni_tecaj = valuta[1] / menjalni_tecaj_izbrane_valute
+        #valute_s_spremenjeno_bazo.append((valuta[0], spremenjen_menjalni_tecaj) 
+        valute_s_spremenjeno_bazo.append((valuta[0],valuta[1]/menjalni_tecaj_izbrane_valute))
     return valute_s_spremenjeno_bazo
 
 
@@ -93,7 +93,7 @@ def posodobi():
     posodobi_valute()
     return  privzeta_stran()
 
-def privzeta_stran()
+def privzeta_stran():
         return template('glavna.html', valute=pretvori_vhodno_vrednost_in_valuto_v_ostale_valute(privzeta_vrednost, privzeta_valuta),  izbrana_vrednost = privzeta_vrednost, izbrana_valuta = privzeta_valuta)
 
 def uporabnikova_stran():
