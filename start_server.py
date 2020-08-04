@@ -7,7 +7,7 @@ import json
 
 '''
     Na spodnji povezavi so menjalni tecaji z interneta. 
-    V nadaljevanju naloge bo funkcija obiskala posodobila menjalne tecaje s tistimi iz interneta.
+    V nadaljevanju naloge bo funkcija obiskala in posodobila menjalne tecaje s tistimi iz interneta.
 '''
 
 menjalni_tecaji_api_url ="https://api.exchangeratesapi.io/latest"
@@ -18,7 +18,7 @@ valute = [("EUR",1), ("USD",1.13), ("GBP", 0.9), ("CHF", 1.06), ("JPY", 120.83),
 
 
 def posodobi_valute():
-    r = urlrllibrequest.urlopen(url = menjalni_tecaji_api_url) 
+    r = urlllib.request.urlopen(url = menjalni_tecaji_api_url) 
     loadeddata = json.loads(r.read())
     valuteDict = loadeddata.get("rates").items()
     seznamValut =  [(k, v) for k, v in loadeddata.get("rates").items()]
