@@ -37,7 +37,7 @@ def posodobi_valute():
     [(15,EUR), (15.30, USD), (30, SIT)]
 '''
 def pretvori_vhodno_vrednost_v_druge_valute(vhodna_vrednost, valute):
-    vrednosti_v_drugih_valutah =[]
+    vrednosti_v_drugih_valutah = []
     for valuta in valute:
         ime_valute = valuta[0]
         menjalni_tecaj = valuta[1]
@@ -68,7 +68,9 @@ def pretvori_menjalne_tecaje_na_bazo_izbrane_valute(izbrana_valuta):
         if valuta[0] ==  izbrana_valuta:
             menjalni_tecaj_izbrane_valute = valuta[1]
     for valuta in valute:
-        valute_s_spremenjeno_bazo.append((valuta[0],valuta[1]/menjalni_tecaj_izbrane_valute))
+            spremenjen_menjalni_tecaj = valuta[1]/menjalni_tecaj_izbrane_valute
+            valute_s_spremenjeno_bazo.append((valuta[0], spremenjen_menjalni_tecaj) 
+        #valute_s_spremenjeno_bazo.append((valuta[0],valuta[1]/menjalni_tecaj_izbrane_valute))
     return valute_s_spremenjeno_bazo
 
 
